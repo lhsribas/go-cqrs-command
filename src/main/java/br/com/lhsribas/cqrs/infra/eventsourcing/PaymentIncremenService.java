@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 @Singleton
 final class PaymentIncremenService {
 
+    /*
     @Inject
     RedisClient redisClient;
 
@@ -18,4 +19,6 @@ final class PaymentIncremenService {
     public void increment(String key, String incrementBy) {
         redisClient.incrby(key, incrementBy);
     }
+    */
+
 }

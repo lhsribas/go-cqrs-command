@@ -9,9 +9,8 @@ import javax.inject.Inject;
 @ApplicationScoped
 final class PaymentNotifierImpl implements PaymentNotifier{
 
-    @Inject
+   /* @Inject
     private PaymentIncremenService service;
-
 
     @Override
     public void notify(Payment payment) {
@@ -24,5 +23,5 @@ final class PaymentNotifierImpl implements PaymentNotifier{
         }
 
     }
-
+*/
 }

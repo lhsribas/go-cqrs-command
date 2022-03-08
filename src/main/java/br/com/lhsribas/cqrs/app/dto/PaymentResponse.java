@@ -1,16 +1,16 @@
-package br.com.lhsribas.cqrs.domain.entity;
+package br.com.lhsribas.cqrs.app.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class EPayment {
+public class PaymentResponse {
 
     private Long id;
     private String product;
-    private LocalDateTime date;
     private BigDecimal value;
     private Double latitude;
     private Double longitude;
+    private LocalDateTime date;
 
     public Long getId() {
         return id;
@@ -26,14 +26,6 @@ public class EPayment {
 
     public void setProduct(String product) {
         this.product = product;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
     }
 
     public BigDecimal getValue() {
@@ -58,5 +50,13 @@ public class EPayment {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }

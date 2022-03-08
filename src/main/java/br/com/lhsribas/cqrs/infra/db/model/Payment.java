@@ -1,15 +1,14 @@
 package br.com.lhsribas.cqrs.infra.db.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "payments")
-public class Payment extends PanacheEntity {
+public class Payment {
 
+    @Id
     @SequenceGenerator(name="payment_seq", sequenceName="payment_seq", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="payment_seq")
     @Column(name = "payment_id", length = 15, nullable = false)
@@ -21,7 +20,7 @@ public class Payment extends PanacheEntity {
     @Column(name = "date_buy", nullable = false)
     private LocalDateTime date;
 
-    @Column(name = "value", precision = 2, nullable = false)
+    @Column(name = "value", nullable = false)
     private BigDecimal value;
 
     @Column(name = "latitude")

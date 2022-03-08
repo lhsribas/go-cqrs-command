@@ -13,7 +13,7 @@ public class SavePaymentUseCaseImpl implements SavePaymentUseCase {
     private PaymentGateway gateway;
 
     @Override
-    public void save(EPayment payment) {
-        gateway.savePayment(payment);
+    public EPayment save(EPayment payment) {
+        return gateway.savePayment(payment);
     }
 }

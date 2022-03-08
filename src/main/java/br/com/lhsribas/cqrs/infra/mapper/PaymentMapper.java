@@ -19,4 +19,18 @@ public class PaymentMapper {
 
         return payment;
     }
+
+    public static EPayment toEntity(Payment payment){
+        Objects.nonNull(payment);
+
+        var ePayment = new EPayment();
+        ePayment.setId(payment.getId());
+        ePayment.setProduct(payment.getProduct());
+        ePayment.setDate(payment.getDate());
+        ePayment.setLatitude(payment.getLatitude());
+        ePayment.setLongitude(payment.getLongitude());
+        ePayment.setValue(payment.getValue());
+
+        return ePayment;
+    }
 }

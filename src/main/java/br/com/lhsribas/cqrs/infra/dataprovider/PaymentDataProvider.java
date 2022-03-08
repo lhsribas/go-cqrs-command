@@ -2,6 +2,7 @@ package br.com.lhsribas.cqrs.infra.dataprovider;
 
 import br.com.lhsribas.cqrs.domain.entity.EPayment;
 import br.com.lhsribas.cqrs.domain.gateway.PaymentGateway;
+import br.com.lhsribas.cqrs.infra.db.model.Payment;
 import br.com.lhsribas.cqrs.infra.db.repository.PaymentRepository;
 import br.com.lhsribas.cqrs.infra.eventsourcing.PaymentNotifier;
 import br.com.lhsribas.cqrs.infra.mapper.PaymentMapper;
@@ -15,18 +16,16 @@ public class PaymentDataProvider implements PaymentGateway {
     @Inject
     private PaymentRepository repository;
 
-    //@Inject
-    //private PaymentNotifier notifier;
 
     @Override
-    public void savePayment(EPayment ePayment) {
+    public EPayment savePayment(EPayment ePayment) {
         var payment = PaymentMapper.toModel(ePayment);
 
-        System.out.println("testetete");
-        // Save the information in the database
-        //repository.persist(payment);
+        //Save the information in the database
+        return PaymentMapper.toEntity(repository.save(payment));
+    }
 
+    public void notify(final Payment payment){
         //Event to Notify the persistence
-       //notifier.notify(payment);
     }
 }
