@@ -16,16 +16,28 @@ public class PaymentDataProvider implements PaymentGateway {
     @Inject
     private PaymentRepository repository;
 
+    @Inject
+    private PaymentNotifier notifier;
 
     @Override
     public EPayment savePayment(EPayment ePayment) {
         var payment = PaymentMapper.toModel(ePayment);
 
         //Save the information in the database
-        return PaymentMapper.toEntity(repository.save(payment));
+        var response = PaymentMapper.toEntity(repository.save(payment));
+
+        // sends the notification
+        notify(response);
+
+        return  response;
     }
 
-    public void notify(final Payment payment){
+    public void notify(final EPayment ePayment){
         //Event to Notify the persistence
+        try{
+            notifier.notify(ePayment);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

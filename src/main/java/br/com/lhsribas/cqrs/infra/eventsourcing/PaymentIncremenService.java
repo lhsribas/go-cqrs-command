@@ -9,16 +9,14 @@ import javax.inject.Singleton;
 @Singleton
 final class PaymentIncremenService {
 
-    /*
     @Inject
     RedisClient redisClient;
 
     @Inject
     ReactiveRedisClient reactiveRedisClient;
 
-    public void increment(String key, String incrementBy) {
-        redisClient.incrby(key, incrementBy);
-    }
-    */
+    public void increment(String key, byte[] incrementBy) {
 
+        redisClient.setbit(key, "customer1", incrementBy.toString());
+    }
 }

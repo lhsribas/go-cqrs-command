@@ -1,5 +1,8 @@
 package br.com.lhsribas.cqrs.domain.entity;
 
+import br.com.lhsribas.cqrs.cross.LocalDateTimeSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -7,6 +10,8 @@ public class EPayment {
 
     private Long id;
     private String product;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime date;
     private BigDecimal value;
     private Double latitude;
