@@ -1,8 +1,7 @@
 package br.com.lhsribas.cqrs.infra.eventsourcing;
 
 import br.com.lhsribas.cqrs.domain.entity.EPayment;
-import br.com.lhsribas.cqrs.infra.db.model.Payment;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.eclipse.microprofile.faulttolerance.Retry;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,12 +12,13 @@ final class PaymentNotifierImpl implements PaymentNotifier{
    @Inject
     private PaymentIncremenService service;
 
+    @Retry(maxRetries = 4, delay = 5L)
     @Override
-    public void notify(EPayment ePayment) {
+    public void notify(EPayment ePayment, final String data) {
         try {
-            var jsonPayment = PaymentJsonWritter.write(ePayment);
-            service.increment(ePayment.getId().toString(), jsonPayment);
-        } catch (JsonProcessingException e) {
+            var key = ePayment.getCustomer().concat("_").concat(ePayment.getId().toString());
+            service.increment(key, data);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

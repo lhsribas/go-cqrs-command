@@ -14,6 +14,9 @@ public class Payment {
     @Column(name = "payment_id", length = 15, nullable = false)
     private Long id;
 
+    @Column(name = "customer", length = 255, nullable = false)
+    private String customer;
+
     @Column(name = "product", length = 255, nullable = false)
     private String product;
 
@@ -43,6 +46,14 @@ public class Payment {
 
     public void setProduct(String product) {
         this.product = product;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
     public LocalDateTime getDate() {

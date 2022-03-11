@@ -11,6 +11,7 @@ public class PaymentMapper {
         Objects.nonNull(ePayment);
 
         var payment = new Payment();
+        payment.setCustomer(ePayment.getCustomer());
         payment.setProduct(ePayment.getProduct());
         payment.setDate(ePayment.getDate());
         payment.setLatitude(ePayment.getLatitude());
@@ -24,6 +25,7 @@ public class PaymentMapper {
         Objects.nonNull(payment);
 
         var ePayment = new EPayment();
+        ePayment.setCustomer(payment.getCustomer());
         ePayment.setId(payment.getId());
         ePayment.setProduct(payment.getProduct());
         ePayment.setDate(payment.getDate());

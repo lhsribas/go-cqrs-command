@@ -4,10 +4,19 @@ import java.math.BigDecimal;
 
 public class PaymentRequest {
 
+    private String customer;
     private String product;
     private BigDecimal value;
     private Double latitude;
     private Double longitude;
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
 
     public String getProduct() {
         return product;

@@ -56,7 +56,6 @@ import br.com.lhsribas.cqrs.app.dto.PaymentRequest;
 import br.com.lhsribas.cqrs.app.service.PaymentService;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;

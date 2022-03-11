@@ -10,7 +10,7 @@ public class EPayment {
 
     private Long id;
     private String product;
-
+    private String customer;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime date;
     private BigDecimal value;
@@ -31,6 +31,14 @@ public class EPayment {
 
     public void setProduct(String product) {
         this.product = product;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
     public LocalDateTime getDate() {

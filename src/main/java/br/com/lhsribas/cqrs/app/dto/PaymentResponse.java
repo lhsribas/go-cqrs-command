@@ -7,6 +7,7 @@ public class PaymentResponse {
 
     private Long id;
     private String product;
+    private String customer;
     private BigDecimal value;
     private Double latitude;
     private Double longitude;
@@ -26,6 +27,14 @@ public class PaymentResponse {
 
     public void setProduct(String product) {
         this.product = product;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
     public BigDecimal getValue() {
